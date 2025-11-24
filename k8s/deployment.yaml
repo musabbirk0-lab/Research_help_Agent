@@ -1,1 +1,19 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: research-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: research-agent
+  template:
+    metadata:
+      labels:
+        app: research-agent
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/<your-org>/research-agent:latest
+          ports:
+            - containerPort: 8080
